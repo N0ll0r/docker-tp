@@ -1,0 +1,31 @@
+services:
+  php-apache:
+    image: php:apache
+    container_name: php-apache
+    volumes:
+      - ./website/:/var/www/html/
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+    networks:
+      - student-list
+    environment:
+#      - URL="http://api:5000/pozos/api/v1.0/get_student_ages"
+      - USERNAME=toto
+      - PASSWORD=python
+
+  api:
+    image: student-list:latest
+    container_name: api
+#    ports:
+#      - "5000:5000"
+    networks:
+      - student-list
+    volumes:
+      - /home/centos/student-list/simple_api/student_age.json:/data/student_age.json
+
+networks:
+  student-list:
+
+
