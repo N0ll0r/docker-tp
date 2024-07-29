@@ -95,7 +95,7 @@ Après de nombreux tests/erreurs, voici la page web qui s'affiche :
 L'objectif est de mettre en place un registry privé pour y stocker notre image docker précédemment créée. 
 
 Pour cela, j'ai décidé de créer un regsitre docker avec une interface graphique. 
-J'ai repris et adapté le docker-compose;yml de ce dépôt : [URL](https://github.com/Joxit/docker-registry-ui)
+J'ai repris et adapté le docker-compose;yml de ce dépôt : [docker-registry-ui](https://github.com/Joxit/docker-registry-ui)
 
 Ce qui donne : 
 ```yaml
