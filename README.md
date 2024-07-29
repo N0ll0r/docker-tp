@@ -31,5 +31,5 @@ FROM base AS prod
 # Commande qui lance le conteneur
 CMD [ "python3", "/student_age.py" ]
 
-
+```
 Après cela, j'ai donc construit l'image et je l'ai testée avec la commande curl mentionnée dans les instructions.
