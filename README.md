@@ -26,7 +26,7 @@ VOLUME /data
 # On expose le port 5000 pour communiquer avec d'autres conteneurs ou l'extérieur
 EXPOSE 5000
  
-# On pratique le multistage afin de réduire l'image même si cela n'a que peu d'effet et c'est aussi pour mettre en pratique cette notion abordé dans le cours de Dirane
+# On pratique le multistage afin de réduire l'image même si cela n'a que peu d'effets et c'est aussi pour mettre en pratique cette notion abordée dans le cours de Dirane
 FROM base AS prod
 # Commande qui lance le conteneur
 CMD [ "python3", "/student_age.py" ]
