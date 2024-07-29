@@ -23,7 +23,7 @@ services:
     networks:
       - student-list
     volumes:
-      - /home/centos/student-list/simple_api/student_age.json:/data/student_age.json
+      - $PWD/simple_api/student_age.json:/data/student_age.json
 
 networks:
   student-list:
