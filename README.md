@@ -1,4 +1,4 @@
-# Mini Projet Conçu par Eazytraining
+# Réalisation du mini Projet conçu par Eazytraining
 
 Les instructions se trouvent dans le fichier nommé "INSTRUCTIONS.md".
 
