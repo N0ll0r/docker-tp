@@ -34,4 +34,4 @@ CMD [ "python3", "/student_age.py" ]
 ```
 Après cela, j'ai donc construit l'image et je l'ai testée avec la commande curl mentionnée dans les instructions.
 
-![Commande Curl après lancement du conteneur avec l'image précédemment construite](https://imgur.com/a/1CjRTPQ)
+![Commande Curl après lancement du conteneur avec l'image précédemment construite](screenshots/Capture d'écran 2024-07-29 185329.png)
