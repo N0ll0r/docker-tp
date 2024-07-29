@@ -9,7 +9,8 @@ Dans cette première étape, il fallait créer une image Docker d'une applicatio
 ### Dockerfile
 
 ```dockerfile
-FROM python:3.8-buster AS base # On part de l'image de base fournie directement par EazyTraining
+# On part de l'image de base fournie directement par EazyTraining
+FROM python:3.8-buster AS base
 LABEL maintainer="N0ll0r" # On nomme celui qui maintient l'image
 RUN apt update -y && apt install python-dev python3-dev libsasl2-dev python-dev libldap2-dev libssl-dev -y # On fait les mises à jour des dépôts et on installe les paquets nécessaires
 COPY student_age.py  / # On copie le code source à la racine 
