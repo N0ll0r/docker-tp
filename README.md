@@ -26,7 +26,7 @@ VOLUME /data
 # On expose le port 5000 pour communiquer avec d'autres conteneurs ou l'extérieur
 EXPOSE 5000
  
-# On pratique le multistage afin de réduire l'image même si cela n'a que peu d'effet et c'est aussi pour mettre en pratique cette notion abordé dans le cours de Dirane
+# On pratique le multistage afin de réduire l'image même si cela n'a que peu d'effets et c'est aussi pour mettre en pratique cette notion abordée dans le cours de Dirane
 FROM base AS prod
 # Commande qui lance le conteneur
 CMD [ "python3", "/student_age.py" ]
@@ -89,3 +89,66 @@ Après de nombreux tests/erreurs, voici la page web qui s'affiche :
 
 
 ![Page_web](https://github.com/N0ll0r/mini-project-docker/blob/main/screenshots/Capture%20d'%C3%A9cran%202024-07-28%20120129.png?raw=true)
+
+## 3ème étape : Docker registry
+
+L'objectif est de mettre en place un registry privé pour y stocker notre image docker précédemment créée. 
+
+Pour cela, j'ai décidé de créer un regsitre docker avec une interface graphique. 
+J'ai repris et adapté le docker-compose;yml de ce dépôt : [docker-registry-ui](https://github.com/Joxit/docker-registry-ui)
+
+Ce qui donne : 
+```yaml
+version: '3.8'
+services:
+  registry-ui:
+    image: joxit/docker-registry-ui:main
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - SINGLE_REGISTRY=true
+      - REGISTRY_TITLE=Private registry of Nollor
+      - DELETE_IMAGES=true
+      - SHOW_CONTENT_DIGEST=true
+      - NGINX_PROXY_PASS_URL=http://registry-server:5000
+      - SHOW_CATALOG_NB_TAGS=true
+      - CATALOG_MIN_BRANCHES=1
+      - CATALOG_MAX_BRANCHES=1
+      - TAGLIST_PAGE_SIZE=100
+      - REGISTRY_SECURED=false
+      - CATALOG_ELEMENTS_LIMIT=1000
+    container_name: registry-ui
+
+
+  registry-server:
+    image: registry:2.8.2
+    restart: always
+    environment:
+# J'ai précisé l'adresse IP de mon host
+      REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin: '[http://192.168.1.166]'
+      REGISTRY_HTTP_HEADERS_Access-Control-Allow-Methods: '[HEAD,GET,OPTIONS,DELETE]'
+      REGISTRY_HTTP_HEADERS_Access-Control-Allow-Credentials: '[true]'
+      REGISTRY_HTTP_HEADERS_Access-Control-Allow-Headers: '[Authorization,Accept,Cache-Control]'
+      REGISTRY_HTTP_HEADERS_Access-Control-Expose-Headers: '[Docker-Content-Digest]'
+      REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+# J'ai aussi précisé le dossier à utiliser pour la persistence des données via : ./registry/data
+    volumes:
+      - ./registry/data:/var/lib/registry
+    container_name: registry-server
+# Ici j'ai dû exposer le port 5000 afin de pouvoir push mon image dessus à l'instar de ce qui est proposé dans le cours docker
+    ports:
+      - "5000:5000"
+
+```
+
+On push l'image après l'avoir taguée  de cette façon : docker tag student-list:latest localhost:5000/student-list
+
+Et on obtient ça quand on se rend sur l'interface graphique :
+
+![image](https://github.com/N0ll0r/mini-project-docker/blob/main/screenshots/Capture%20d'%C3%A9cran%202024-07-28%20213939.png?raw=true)
+
+![image](https://github.com/N0ll0r/mini-project-docker/blob/main/screenshots/Capture%20d'%C3%A9cran%202024-07-28%20213953.png?raw=true)
+
+
+C'est ici que s'achève mon premier mini-projet Docker et c'était sympa à réaliser.  Cela me pousse à en réaliser d'autres afin de monter en compétences sur cette technologie qui est tout bonnement formidable !
