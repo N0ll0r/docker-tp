@@ -84,6 +84,8 @@ networks:
 
 ```
 
+
 Après de nombreux tests/erreurs, voici la page web qui s'affiche :
+
 
 ![Page_web](https://github.com/N0ll0r/mini-project-docker/blob/main/screenshots/Capture%20d'%C3%A9cran%202024-07-28%20120129.png?raw=true)
