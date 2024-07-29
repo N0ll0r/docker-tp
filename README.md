@@ -34,4 +34,4 @@ CMD [ "python3", "/student_age.py" ]
 ```
 Après cela, j'ai donc construit l'image et je l'ai testée avec la commande curl mentionnée dans les instructions.
 
-![Commande Curl après lancement du conteneur avec l'image précédemment construite]([screenshots/Capture d'écran 2024-07-29 185329.png](https://github.com/N0ll0r/mini-project-docker/blob/e2ef3bce517d7fd50cece7f6131d083fd8008fcc/screenshots/Capture%20d'%C3%A9cran%202024-07-29%20185329.png))
+![Commande Curl]([screenshots/Capture d'écran 2024-07-29 185329.png](https://github.com/N0ll0r/mini-project-docker/blob/e2ef3bce517d7fd50cece7f6131d083fd8008fcc/screenshots/Capture%20d'%C3%A9cran%202024-07-29%20185329.png))
