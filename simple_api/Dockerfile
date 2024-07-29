@@ -5,7 +5,7 @@ COPY student_age.py  /
 COPY requirements.txt /
 RUN pip3 install -r /requirements.txt
 VOLUME /data
+EXPOSE 5000
 
 FROM base AS prod
-EXPOSE 5000
 CMD [ "python3", "/student_age.py" ]
