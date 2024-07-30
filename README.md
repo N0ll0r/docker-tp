@@ -54,7 +54,7 @@ services:
 # Comme souhaité, le volume est persistent avec la jonction entre ces 2 dossiers
     volumes:
       - ./website/:/var/www/html/
-# Comme mentionné dans les instructions, le conteneur php-apache ne s'exéccute que si le conteneur api est démarré
+# Comme mentionné dans les instructions, le conteneur php-apache ne s'exécute que si le conteneur api est démarré
     depends_on:
       - api
     ports:
@@ -94,8 +94,7 @@ Après de nombreux tests/erreurs, voici la page web qui s'affiche :
 
 L'objectif est de mettre en place un registry privé pour y stocker notre image docker précédemment créée. 
 
-Pour cela, j'ai décidé de créer un regsitre docker avec une interface graphique. 
-J'ai repris et adapté le docker-compose;yml de ce dépôt : [docker-registry-ui](https://github.com/Joxit/docker-registry-ui)
+Pour cela,j'ai repris ce qui avait été proposé dans le cours et adapté le docker-compose.yml de ce dépôt : [docker-registry-ui](https://github.com/Joxit/docker-registry-ui)
 
 Ce qui donne : 
 ```yaml
