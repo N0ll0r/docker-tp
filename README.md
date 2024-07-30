@@ -1,4 +1,4 @@
-# Réalisation du mini Projet conçu par Eazytraining
+# Réalisation du mini projet Docker conçu par Eazytraining
 
 Les instructions se trouvent dans le fichier nommé "INSTRUCTIONS.md".
 
